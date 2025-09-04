@@ -73,33 +73,23 @@
 //   return "";
 // }
 
-//substring method
-function longestCommonPrefixSubstring(strs: string[]): string {
-  let sorted = strs.sort();
-  for (let i = 0; i < sorted[0].length; i++) {
-    if (sorted[0][i] !== sorted[sorted.length - 1][i])
-      return sorted[0].substring(0, i);
-  }
-  return sorted[0];
-}
-
+//unnoted condition: ALL strings must have share a common prefix
 function longestCommonPrefix(strs: string[]): string {
   if (strs.length === 0) return "";
   if (strs.length === 1) return strs[0];
-  //get in order
   strs.sort();
-  const first = strs[0],
-    last = strs[strs.length - 1];
-  let result = "";
-  //if we have it alphabetical, then we can check what the first and last have in common
+  //if we sort first, we only need to first and last strings
+  const first: string = strs[0];
+  const last: string = strs[strs.length - 1];
+  let result: string = "";
   for (let i = 0; i < first.length; i++) {
+    //compare letter by letter and add until diffrerent
     if (first[i] === last[i]) {
       result += first[i];
     } else {
       break;
     }
   }
-
   return result;
 }
 
